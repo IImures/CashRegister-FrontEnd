@@ -1,0 +1,75 @@
+<div class="sidebar" [ngClass]="{'expanded': isSidebarExpanded}">
+  <div class="cataloged-div d-flex align-items-center justify-content-between border-bottom">
+    <h2 class="h5">Каталог</h2>
+    <button class="btn btn-outline-secondary" (click)="openSidebar()">
+      <img src="/assets/icons/close.svg" alt="close sidebar button" height="42" width="42"/>
+    </button>
+  </div>
+  <ul class="sidebar-nav list-unstyled p-3">
+    <li class="sidebar-item mb-2">
+      <a href="#" class="sidebar-link d-flex align-items-center p-2 rounded" data-bs-toggle="collapse"
+         data-bs-target="#terminals" aria-expanded="false" aria-controls="terminals">
+        <img src="/assets/icons/archive.svg" height="32" width="32" alt="archive icon" class="me-2"/>
+        <span>Фіскальне обладнання</span>
+      </a>
+      <ul id="terminals" class="sidebar-dropdown collapse ms-3">
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link p-2 rounded">Касові апарати</a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link p-2 rounded">Фіскальні реєстратори</a>
+        </li>
+      </ul>
+    </li>
+    <li class="sidebar-item mb-2">
+      <a href="#" class="sidebar-link d-flex align-items-center p-2 rounded" data-bs-toggle="collapse"
+         data-bs-target="#printers" aria-expanded="false" aria-controls="printers">
+        <img src="/assets/icons/archive.svg" height="32" width="32" alt="archive icon" class="me-2"/>
+        <span>Лазерні принтери</span>
+      </a>
+      <ul id="printers" class="sidebar-dropdown collapse ms-3">
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link p-2 rounded">Ремонт лазерних принтерів</a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link p-2 rounded">Заправка картриджів</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class ="dark-overlay" (click)="clickOutside()" [ngClass]="{'expanded': isSidebarExpanded}"></div>
+
+<nav class="navbar align-items-center navbar-expand-sm navbar-light header-color">
+  <div class="container-fluid header-color">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img ngSrc="/assets/icons/gear-icon.svg" alt="gear icon" height="50" width="50" class="me-2">
+      <h2 >Сервісний центр</h2>
+    </a>
+<!--    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+    <div class = "d-flex align-items-start flex-grow-1" >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="tel:+380680220197">068-02-20-197</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:igor.kalinchenko@gmail.com">igor.kalinchenko&#64;gmail.com</a>
+        </li>
+      </ul>
+<!--      <form class="d-flex">-->
+<!--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--      </form>-->
+    </div>
+    <div class ="wrapper">
+        <div class ="d-flex">
+          <button id="toggle-btn" (click)="openSidebar()">
+            <img ngSrc="/assets/icons/Menulist.svg" alt="list icon" height="48" width="48">
+          </button>
+        </div>
+    </div>
+  </div>
+</nav>
