@@ -6,8 +6,11 @@
 }
 
 .navbar{
-  border-bottom-right-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  //border-bottom-right-radius: 1rem;
+  //border-bottom-left-radius: 1rem;
+  z-index: 1;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4); /* Shadow settings */
+
 }
 
 #toggle-btn{
@@ -97,5 +100,7 @@
 @media (max-width: 482px) {
   .sidebar {
     width: 100%; /* Full width on smaller screens */
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
 }
