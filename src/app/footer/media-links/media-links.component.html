@@ -1,0 +1,31 @@
+<ul class="list-unstyled">
+
+  <li  class="d-flex align-items-center mb-2"
+       *ngFor="let link of links">
+    <a href="{{link.url}}" class="nav-link d-flex align-items-center">
+      <img class ="img" ngSrc="{{link.icon}}" alt="{{link.alt}}" height="20" width="20">
+      <span>{{link.title}}</span>
+    </a>
+
+  </li>
+
+
+<!--  <li class="d-flex align-items-center mb-2">-->
+<!--    <a href="#" class="nav-link d-flex align-items-center">-->
+<!--      <img class ="img" ngSrc="/assets/icons/facebook.svg" alt="facebook" height="20" width="20">-->
+<!--      <span>Facebook</span>-->
+<!--    </a>-->
+<!--  </li>-->
+<!--  <li class="d-flex align-items-center mb-2">-->
+<!--    <a href="#" class="nav-link d-flex align-items-center">-->
+<!--      <img class ="img" ngSrc="/assets/icons/instagram.svg" alt="instagram" height="20" width="20">-->
+<!--      <span>Instagram</span>-->
+<!--    </a>-->
+<!--  </li>-->
+<!--  <li class="d-flex align-items-center mb-2">-->
+<!--    <a href="#" class="nav-link d-flex align-items-center">-->
+<!--      <img class ="img" ngSrc="/assets/icons/telegram.svg" alt="telegram" height="20" width="20">-->
+<!--      <span>Telegram</span>-->
+<!--    </a>-->
+<!--  </li>-->
+</ul>

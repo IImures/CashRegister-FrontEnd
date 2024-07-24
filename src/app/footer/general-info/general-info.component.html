@@ -1,0 +1,20 @@
+<address>
+  <a target="_blank" href="{{positionUrl}}" class="nav-link d-flex align-items-center mb-2">
+    <img class ="img" ngSrc="/assets/icons/map-pin.svg" alt="map pin" height="20" width="20">
+    <span>{{position}}</span>
+  </a>
+  <a href="mailto:{{email}}" class="nav-link d-flex align-items-center mb-2">
+    <img class ="img" ngSrc="/assets/icons/mail.svg" alt="mail" height="20" width="20">
+    <span>{{email}}</span>
+  </a>
+  <div class="d-flex align-items-center mb-2">
+    <img class ="img" ngSrc="/assets/icons/phone.svg" alt="phone" height="20" width="20">
+    <a class ="nav-link phone"
+       *ngFor="let phone of phones"
+      href="tel:+380{{phone}}}"
+    >
+      {{phone}}
+    </a>
+
+  </div>
+</address>

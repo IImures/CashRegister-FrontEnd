@@ -4,26 +4,8 @@
       <!-- Social Media Links -->
       <div class="col-md-4">
         <h3>Соціальні мережі</h3>
-        <ul class="list-unstyled">
-          <li class="d-flex align-items-center mb-2">
-            <a href="#" class="nav-link d-flex align-items-center">
-              <img class ="img" ngSrc="/assets/icons/facebook.svg" alt="facebook" height="20" width="20">
-              <span>Facebook</span>
-            </a>
-          </li>
-          <li class="d-flex align-items-center mb-2">
-            <a href="#" class="nav-link d-flex align-items-center">
-              <img class ="img" ngSrc="/assets/icons/instagram.svg" alt="instagram" height="20" width="20">
-              <span>Instagram</span>
-            </a>
-          </li>
-          <li class="d-flex align-items-center mb-2">
-            <a href="#" class="nav-link d-flex align-items-center">
-              <img class ="img" ngSrc="/assets/icons/telegram.svg" alt="telegram" height="20" width="20">
-              <span>Telegram</span>
-            </a>
-          </li>
-        </ul>
+
+        <app-media-links></app-media-links>
 
         <p>©2019. Всі права захищені.</p>
 
@@ -31,31 +13,18 @@
 
       <div class="col-md-4">
         <h3>Навігація</h3>
-        <ul class="list-unstyled">
-          <li><a class="nav-link" href="#">>> Обладнання</a></li>
-          <li><a class="nav-link" href="#">>> Співпраця</a></li>
-          <li><a class="nav-link" href="#">>> Приклад</a></li>
-          <li><a class="nav-link" href="#">>> Часті питання</a></li>
-        </ul>
+<!--        <ul class="list-unstyled">-->
+<!--          <li><a class="nav-link mb-1" href="#">>> Обладнання</a></li>-->
+<!--          <li><a class="nav-link mb-1" href="#">>> Співпраця</a></li>-->
+<!--          <li><a class="nav-link mb-1" href="#">>> Приклад</a></li>-->
+<!--          <li><a class="nav-link mb-1" href="#">>> Часті питання</a></li>-->
+<!--        </ul>-->
+        <app-navigation-list></app-navigation-list>
       </div>
 
       <div class="col-md-4">
         <h3>Контакти</h3>
-        <address>
-          <a target="_blank" href="https://www.google.com/maps/place/%D0%98%D0%B3%D1%80%D0%BE%D0%B2%D1%8B%D0%B5+%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D1%8B/@48.8834247,36.2906194,20.25z/data=!4m6!3m5!1s0x40df28d316718e21:0xba0d07fa6c822fb5!8m2!3d48.8834007!4d36.2906572!16s%2Fg%2F11bxjm5zv9?entry=ttu" class="nav-link d-flex align-items-center">
-            <img class ="img" ngSrc="/assets/icons/map-pin.svg" alt="map pin" height="20" width="20">
-            <span>м. Лозова, мкр-н 1, буд.12,  н/п 1</span>
-          </a>
-          <a href="mailto:igor.Kalinchenko@gmail.com" class="nav-link d-flex align-items-center">
-            <img class ="img" ngSrc="/assets/icons/mail.svg" alt="mail" height="20" width="20">
-            <span>igor.Kalinchenko&#64;gmail.com</span>
-          </a>
-          <div class="d-flex align-items-center">
-            <img class ="img" ngSrc="/assets/icons/phone.svg" alt="phone" height="20" width="20">
-            <a class ="nav-link phone" href ="tel:+380680220197" > 068-02-20-197 </a>
-            <a class ="nav-link phone" href ="tel:+38123-45-67-890" > 123-45-67-890 </a>
-          </div>
-        </address>
+        <app-general-info></app-general-info>
       </div>
     </div>
   </div>
