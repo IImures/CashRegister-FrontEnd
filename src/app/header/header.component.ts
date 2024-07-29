@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import {SideBarComponent} from "./side-bar/side-bar.component";
+import {Router} from "express";
+import {SidebarHeaderService} from "./sidebar-header.service";
 
 @Component({
   selector: 'app-header',
@@ -9,21 +12,17 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
     NgOptimizedImage,
     NgClass,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    SideBarComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  isSidebarExpanded = false;
+  sidebarHeader : SidebarHeaderService
 
-  openSidebar(){
-    this.isSidebarExpanded = !this.isSidebarExpanded;
+  constructor(sidebarHeader : SidebarHeaderService) {
+    this.sidebarHeader = sidebarHeader;
   }
 
-  clickOutside() {
-    if (this.isSidebarExpanded) {
-      this.openSidebar();
-    }
-  }
 }
