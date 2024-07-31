@@ -15,9 +15,12 @@
         <span>{{categoryItem.mainCategoryName}}</span>
       </a>
 
-      <ul [id]="categoryItem.nameId" *ngFor="let subCategoryItem of categoryItem.subCategories" class="sidebar-dropdown collapse ms-3">
-        <li class="sidebar-item">
-          <a [href]="subCategoryItem.subCategoryUrl" class="sidebar-link p-2 rounded">{{subCategoryItem.subCategoryName}}</a>
+      <ul [id]="categoryItem.nameId" class="sidebar-dropdown collapse ms-3">
+        <li  *ngFor="let subCategoryItem of categoryItem.subCategories" class="sidebar-item">
+          <a [routerLink]="['/catalog', subCategoryItem.subCategoryType, subCategoryItem.subCategoryId]"
+             routerLinkActive="true" class="sidebar-link p-2 rounded"
+             (click)="sidebarHeader.clickOutside()"
+          >{{subCategoryItem.subCategoryName}}</a>
         </li>
       </ul>
     </li>

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {SideBarComponent} from "./side-bar/side-bar.component";
-import {Router} from "express";
 import {SidebarHeaderService} from "./sidebar-header.service";
 
 @Component({
@@ -19,10 +18,7 @@ import {SidebarHeaderService} from "./sidebar-header.service";
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  sidebarHeader : SidebarHeaderService
 
-  constructor(sidebarHeader : SidebarHeaderService) {
-    this.sidebarHeader = sidebarHeader;
-  }
+  constructor(public sidebarHeader : SidebarHeaderService) {}
 
 }

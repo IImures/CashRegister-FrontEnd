@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgClass, NgForOf, NgOptimizedImage} from "@angular/common";
 import {SidebarHeaderService} from "../sidebar-header.service";
+import { RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,7 +9,9 @@ import {SidebarHeaderService} from "../sidebar-header.service";
   imports: [
     NgOptimizedImage,
     NgClass,
-    NgForOf
+    NgForOf,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss'
@@ -22,11 +25,13 @@ export class SideBarComponent {
       subCategories: [
         {
           subCategoryName: "Касові апарати",
-          subCategoryUrl: "1"
+          subCategoryType: "list",
+          subCategoryId: "1"
         },
         {
           subCategoryName: "Фіскальні реєстратори",
-          subCategoryUrl: "2"
+          subCategoryType: "list",
+          subCategoryId: "2"
         }
       ]
     },
@@ -36,19 +41,22 @@ export class SideBarComponent {
       subCategories: [
         {
           subCategoryName: "Ремонт лазерних принтерів",
-          subCategoryUrl: "3"
+          subCategoryType: "list",
+          subCategoryId: "3"
         },
         {
           subCategoryName: "Заправка картриджів",
-          subCategoryUrl: "4"
+          subCategoryType: "list",
+          subCategoryId: "4"
         }
       ]
     }
   ];
 
-  sidebarHeader: SidebarHeaderService
 
-  constructor(sidebarHeader: SidebarHeaderService) {
+  constructor(
+    public sidebarHeader: SidebarHeaderService
+  ) {
     this.sidebarHeader = sidebarHeader;
   }
 
@@ -62,5 +70,6 @@ export interface CatalogList{
 
 export interface SubCategory{
   subCategoryName: string;
-  subCategoryUrl: string;
+  subCategoryType: string;
+  subCategoryId: string;
 }

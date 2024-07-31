@@ -18,7 +18,8 @@ export const routes: Routes = [
     component: FindUsComponent
   },
   {
-    path: 'catalogue/:id',
-    component: CatalogComponent
-  }
+    path: 'catalog/list/:id',
+    component: CatalogComponent,
+    pathMatch: 'full'
+  },
 ];
