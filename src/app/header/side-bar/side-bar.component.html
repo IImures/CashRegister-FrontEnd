@@ -10,14 +10,14 @@
 
     <li *ngFor="let categoryItem of categoryList" class="sidebar-item mb-2">
       <a href="#" class="sidebar-link d-flex align-items-center p-2 rounded" data-bs-toggle="collapse"
-         [attr.data-bs-target]="'#' + categoryItem.nameId" aria-expanded="false" [attr.aria-controls]="categoryItem.nameId">
+         [attr.data-bs-target]="'#' + categoryItem.id" aria-expanded="false" [attr.aria-controls]="categoryItem.id">
         <img ngSrc="/assets/icons/archive.svg" height="32" width="32" alt="archive icon" class="me-2"/>
         <span>{{categoryItem.mainCategoryName}}</span>
       </a>
 
-      <ul [id]="categoryItem.nameId" class="sidebar-dropdown collapse ms-3">
+      <ul [id]="categoryItem.id" class="sidebar-dropdown collapse ms-3">
         <li  *ngFor="let subCategoryItem of categoryItem.subCategories" class="sidebar-item">
-          <a [routerLink]="['/catalog', subCategoryItem.subCategoryType, subCategoryItem.subCategoryId]"
+          <a [routerLink]="['/catalog', categoryItem.id, subCategoryItem.subCategoryType, subCategoryItem.subCategoryId]"
              routerLinkActive="true" class="sidebar-link p-2 rounded"
              (click)="sidebarHeader.clickOutside()"
           >{{subCategoryItem.subCategoryName}}</a>

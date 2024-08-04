@@ -18,7 +18,7 @@ export const routes: Routes = [
     component: FindUsComponent
   },
   {
-    path: 'catalog/list/:id',
+    path: 'catalog/:categoryId/list/:subCategoryId',
     component: CatalogComponent,
     pathMatch: 'full'
   },
