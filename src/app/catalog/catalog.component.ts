@@ -1,12 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink, RouterLinkActive} from "@angular/router";
 import {ListComponentComponent} from "./list-component/list-component.component";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
   imports: [
-    ListComponentComponent
+    ListComponentComponent,
+    NgOptimizedImage,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.scss'
