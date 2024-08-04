@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import {HomePageComponent} from "./home-page/home-page.component";
 import {FindUsComponent} from "./find-us/find-us.component";
 import {CatalogComponent} from "./catalog/catalog.component";
+import {ProductPageComponent} from "./product-page/product-page.component";
 
 export const routes: Routes = [
   {
@@ -22,4 +23,8 @@ export const routes: Routes = [
     component: CatalogComponent,
     pathMatch: 'full'
   },
+  {
+    path: 'product/:id',
+    component:ProductPageComponent
+  }
 ];
