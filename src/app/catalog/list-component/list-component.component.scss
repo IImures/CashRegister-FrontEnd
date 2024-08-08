@@ -9,7 +9,7 @@
 }
 .custom-card img {
   width: 100%;
-  height: auto;
+  //height: auto;
   border-radius: 10px;
 }
 .custom-button {
@@ -30,4 +30,10 @@
 }
 h5 {
   font-size: 1.25rem;
+}
+
+.product-img{
+  height: 147px;
+  width: 180px;
+  object-fit: cover;
 }

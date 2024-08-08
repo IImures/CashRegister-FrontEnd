@@ -1,9 +1,13 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {ListComponentComponent} from "./list-component/list-component.component";
-import {NgForOf, NgOptimizedImage, SlicePipe} from "@angular/common";
-import {CatalogItem} from "../header/side-bar/side-bar.component";
+import {NgForOf, NgIf, NgOptimizedImage, SlicePipe} from "@angular/common";
 import {filter, Subscription} from "rxjs";
+import {CatalogItem} from "../interfaces/catalog-item";
+import {SubCatalogService} from "../services/sub-catalog.service";
+import {ListItemDetails} from "../interfaces/list-item-details";
+import {ProductDetailsService} from "../services/product-details.service";
+import {blob} from "node:stream/consumers";
 
 @Component({
   selector: 'app-catalog',
@@ -14,79 +18,86 @@ import {filter, Subscription} from "rxjs";
     RouterLink,
     RouterLinkActive,
     NgForOf,
-    SlicePipe
+    SlicePipe,
+    NgIf
   ],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.scss'
 })
-export class CatalogComponent implements OnInit, OnDestroy {
-  category: CatalogItem = {
-    mainCategoryName: "Фіскальне обладнання",
-    id: "1",
-    subCategories: [
-      {
-        subCategoryName: "Касові апарати",
-        subCategoryType: "list",
-        subCategoryId: "1"
-      }
-    ]
-  }
-  listItems : ListItemDetails[] = [
-    {
-      id: "1",
-      name: "Модель MG-V5T.02",
-    },
-    {
-      id: "2",
-      name: "Модель MG-V5T.02",
-    },
-    {
-      id: "3",
-      name: "Модель MG-V5T.02",
-    },
-    {
-      id: "4",
-      name: "Модель MG-V5T.02",
-    },
-    {
-      id: "5",
-      name: "Модель MG-V5T.02",
-    },
-    {
-      id: "6",
-      name: "Модель MG-V5T.02",
-    },
-  ]
+export class CatalogComponent implements OnInit,AfterViewInit , OnDestroy {
+
+  catalog?: CatalogItem;
+
+  listItems : ListItemDetails[] = []
   protected limit: number = 20;
+  protected pageNumber: number = 0;
+  protected maxPage: number = 0;
 
   private routeSubscription?: Subscription;
+  @ViewChildren(ListComponentComponent) listComponents!: QueryList<ListComponentComponent>;
 
- constructor(
+
+  constructor(
    private router: Router,
-   private route: ActivatedRoute
+   private route: ActivatedRoute,
+   private subCatalogService: SubCatalogService,
+   private productService: ProductDetailsService
  ){}
 
   ngOnInit() {
-    this.routeSubscription = this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd)
-      )
-      .subscribe(() => {
-        const categoryId = this.route.snapshot.paramMap.get('categoryId');
-        const subCategoryId = this.route.snapshot.paramMap.get('subCategoryId');
-        console.log(categoryId + " " + subCategoryId);
-      });
+    // Subscribe to paramMap to handle route parameter changes without navigation
+    this.routeSubscription = this.route.paramMap.subscribe(params => {
+      const categoryId = params.get('categoryId');
+      const subCatalogId = params.get('subCategoryId');
+
+      if (!categoryId || !subCatalogId) {
+        console.log("Failed to get data from URL");
+        return;
+      }
+
+      if (isNaN(Number(categoryId)) || isNaN(Number(subCatalogId))) {
+        console.log("Failed to get data from URL");
+        return;
+      }
+
+      this.fetchData(Number(subCatalogId));
+    });
   }
 
   ngOnDestroy() {
     if (this.routeSubscription) {
       this.routeSubscription.unsubscribe();
     }
+    this.listItems=[];
   }
 
+  private fetchData(subCatalogId: number) {
+    this.subCatalogService.getSubCatalogById(subCatalogId)
+      .subscribe(
+        catalogItem =>{
+          this.catalog = catalogItem;
+        },
+      );
+    this.productService.getProductDetails(subCatalogId, this.limit)
+      .subscribe(
+        productDetails =>{
+          this.listItems = productDetails.content;
+          this.pageNumber = productDetails.pageable.pageNumber;
+          this.maxPage = productDetails.totalPages;
+
+        }
+      )
+  }
+
+  ngAfterViewInit(): void {
+    this.listComponents.forEach(
+      component =>{
+        component.getImageFromService();
+      }
+    );
+  }
+
+
+
 }
 
-export interface ListItemDetails{
-  id: string;
-  name: string;
-}

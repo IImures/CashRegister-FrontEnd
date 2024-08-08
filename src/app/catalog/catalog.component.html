@@ -6,15 +6,14 @@
     <h2>Касові апарати</h2>
     <div class = "route">
       <a routerLink="/home" routerLinkActive="true" class = "return-home-button">Головна</a>
-      <span>&#160;>> {{category.mainCategoryName}} >> {{category.subCategories[0].subCategoryName}}</span>
+      <span *ngIf="catalog != undefined" >&#160;>> {{catalog.catalogName}} >> {{catalog.subCatalogs[0].subCatalogName}}</span>
     </div>
     <br>
     <div class ="row">
 
       <div class = "col-md-2" *ngFor="let listItem of listItems | slice:0:limit">
         <app-list-component
-        [productName]="listItem.name"
-        [productId]="listItem.id"
+        [itemDetails]="listItem"
         >
         </app-list-component>
       </div>
