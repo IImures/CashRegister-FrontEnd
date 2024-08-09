@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NgbInputDatepicker, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {HeaderComponent} from "./header/header.component";
 import {RouterOutlet} from "@angular/router";
 import {FooterComponent} from "./footer/footer.component";
@@ -8,6 +8,7 @@ import {FooterComponent} from "./footer/footer.component";
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  host: {ngSkipHydration: "true"},
   imports: [
     NgbInputDatepicker,
     HeaderComponent,

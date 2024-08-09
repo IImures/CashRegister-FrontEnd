@@ -1,8 +1,8 @@
 
-<div *ngIf="itemDetails != undefined" class="card custom-card">
+<div *ngIf="itemDetails != null" class="card custom-card">
 
-  <img *ngIf="!isImageLoading; else loading"
-       [src]="imageUrl"
+  <img *ngIf="itemDetails.imageData != undefined && itemDetails.imageData.length>22; else loading"
+       [src]="itemDetails.imageUrl"
        alt="Image of product"
        class = "product-img"
   >

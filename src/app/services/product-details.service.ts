@@ -20,6 +20,6 @@ export class ProductDetailsService {
   }
 
   getProductImage(id: number): Observable<Blob>  {
-    return this.http.get(`${this.url}/${id}/image`, { responseType: 'blob' }) as Observable<Blob>;
+    return this.http.get(`${this.url}/${id}/image`, { responseType: 'blob' });
   }
 }

@@ -1,5 +1,8 @@
+import {SafeUrl} from "@angular/platform-browser";
+
 export interface ListItemDetails {
   id: number;
   name: string;
-  imageData?: Blob;
+  imageData: string;
+  imageUrl: SafeUrl;
 }
