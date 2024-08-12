@@ -3,6 +3,7 @@ import {HomePageComponent} from "./home-page/home-page.component";
 import {FindUsComponent} from "./find-us/find-us.component";
 import {CatalogComponent} from "./catalog/catalog.component";
 import {ProductPageComponent} from "./product-page/product-page.component";
+import {EditorPageComponent} from "./editor-page/editor-page.component";
 
 export const routes: Routes = [
   {
@@ -27,5 +28,9 @@ export const routes: Routes = [
     path: 'product/:id',
     component:ProductPageComponent
   },
+  {
+    path: 'edit',
+    component: EditorPageComponent
+  }
 
 ];
