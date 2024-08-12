@@ -4,13 +4,14 @@ import {PageResponse} from "../interfaces/page-response";
 import {ListItemDetails} from "../interfaces/list-item-details";
 import {Observable} from "rxjs";
 import {ProductPageDetails} from "../interfaces/product-page-details";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductDetailsService {
 
-  private url: string = 'http://localhost:8080/api/v1/product';
+  private url: string = `${environment.apiUrl}/${environment.apiVersion}/product`;
 
   constructor(
     private http: HttpClient

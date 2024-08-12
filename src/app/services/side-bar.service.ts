@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CatalogItem} from "../interfaces/catalog-item";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class SideBarService {
 
-  private url: string = 'http://localhost:8080/api/v1/catalog';
+  private url: string = `${environment.apiUrl}/${environment.apiVersion}/catalog`;
 
   constructor(
     private http: HttpClient

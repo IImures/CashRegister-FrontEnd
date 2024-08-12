@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CatalogItem} from "../interfaces/catalog-item";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubCatalogService {
 
-  private url: string = 'http://localhost:8080/api/v1/sub-catalog';
+  private url: string = `${environment.apiUrl}/${environment.apiVersion}/sub-catalog`;
 
   constructor(
     private http: HttpClient,
