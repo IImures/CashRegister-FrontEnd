@@ -4,6 +4,8 @@
   background-image: url("/assets/photos/catalog-bg.jpg");
   z-index: 1;
   font-weight: 500;
+  height: 100%;
+  width: 100%;
 }
 
 .main-product-container::before {
@@ -38,6 +40,7 @@
   border-bottom-right-radius: 3rem;
   border-bottom-left-radius: 3rem;
   border-top-right-radius: 3rem;
+  min-height: 300px;
 }
 
 .nav-link{
@@ -58,5 +61,6 @@
 
 .general-info{
   padding: 2rem;
+  min-height: 300px;
 }
 
