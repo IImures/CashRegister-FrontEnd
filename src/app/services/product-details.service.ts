@@ -17,19 +17,33 @@ export class ProductDetailsService {
     private http: HttpClient
   ) { }
 
-  getProductDetails(id: number, limit: number) {
-    return this.http.get<PageResponse<ListItemDetails>>(`${this.url}/sub-catalog/${id}?limit=${limit}`);
+  getProductDetails(id: string, limit: number, page: number): Observable<PageResponse<ListItemDetails>> {
+    return this.http.get<PageResponse<ListItemDetails>>(`${this.url}/subcatalog/${id}?limit=${limit}&page=${page -1}`);
   }
 
   getProductImage(id: number) : Observable<Blob>  {
     return this.http.get(`${this.url}/${id}/image`, { responseType: 'blob' });
   }
 
-  getProductDescription(productId: number) {
+  getProductDescription(productId: string) {
     return this.http.get<ProductPageDetails>(`${this.url}/${productId}/description`);
   }
 
-  getProductDescriptionImage(productId: number) : Observable<Blob>  {
+  getProductDescriptionImage(productId: string) : Observable<Blob>  {
     return this.http.get(`${this.url}/${productId}/description/image`, { responseType: 'blob' });
+  }
+
+  getProductsWithSelectedProducers(subCatalogId: string, selectedProducers: string[])
+  {
+    const producersString = selectedProducers.join();
+    return this.http.get<PageResponse<ListItemDetails>>(`${this.url}/subcatalog/${subCatalogId}?producers=${producersString}`);
+  }
+
+  getProductsWithNameAndProducers(subCatalogId: string, searchArg: string, selectedProducers: string[]) {
+    let producers = '';
+    if(selectedProducers && selectedProducers.length > 0){
+      producers ='&producers=' + selectedProducers.join(', ');
+    }
+    return this.http.get<PageResponse<ListItemDetails>>(`${this.url}/subcatalog/${subCatalogId}?name=${searchArg}${producers}`)
   }
 }

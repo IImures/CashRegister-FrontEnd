@@ -55,13 +55,13 @@ export class ProductPageComponent implements OnInit, OnDestroy {
         return;
       }
 
-      this.fetchData(Number(productId));
+      this.fetchData(productId);
       this.componentLoaded = true;
     });
 
   }
 
-  private fetchData(productId: number) {
+  private fetchData(productId: string) {
     this.productService.getProductDescription(productId).subscribe(
       description => {
         this.description = description;

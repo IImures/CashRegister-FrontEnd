@@ -14,7 +14,7 @@ export class SubCatalogService {
     private http: HttpClient,
   ) { }
 
-  getSubCatalogById(id: number) {
+  getSubCatalogById(id: string) {
     return this.http.get<CatalogItem>(`${this.url}/${id}`);
   }
 }
