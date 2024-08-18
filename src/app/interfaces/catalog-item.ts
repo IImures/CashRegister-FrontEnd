@@ -1,7 +1,7 @@
 import {SubCatalogItem} from "./sub-catalog-item";
 
 export interface CatalogItem {
-  catalogName: string;
   id: string;
+  catalogName: string;
   subCatalogs: SubCatalogItem[];
 }

@@ -18,4 +18,21 @@ export class SideBarService {
   getCatalog(){
     return this.http.get<CatalogItem[]>(this.url)
   }
+
+
+  createCatalog(catalogName : string,) {
+    return this.http.post(this.url, {
+        catalogName : catalogName,
+    })
+  }
+
+  deleteCatalog(id: string) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
+  updateCatalog(id: string, catalogName: string) {
+    return this.http.put(`${this.url}/${id}`, {
+      catalogName : catalogName,
+    });
+  }
 }

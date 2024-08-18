@@ -1,0 +1,167 @@
+<h1>Редагування каталогу</h1>
+<div class="container mt-5">
+
+  <ul class="list-group list-group-flush list-group-item-primary">
+
+    <li class="list-group-item text-primary" *ngFor="let catalogItem of catalogItems" [id]="'c-' + catalogItem.id">
+      <span *ngIf="!ifEditCatalog[catalogItem.id]">{{catalogItem.catalogName}}</span>
+
+      <span *ngIf="!ifEditCatalog[catalogItem.id]" class="float-end">
+        <button class="btn btn-sm btn-warning me-2" (click)="editCatalog(catalogItem)">Редагувати</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteCatalog(catalogItem.id)">Видалити</button>
+      </span>
+
+
+
+      <form *ngIf="ifEditCatalog[catalogItem.id]" [formGroup]="editCatalogForm[catalogItem.id]" class="row g-2" (ngSubmit)="onSubmitEditCatalog(catalogItem)">
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Назва категорії"
+            formControlName="catalogName"
+          />
+          <div *ngIf="editCatalogForm[catalogItem.id].get('catalogName')?.invalid && editCatalogForm[catalogItem.id].get('catalogName')?.touched" class="text-danger">
+            Catalog name is required.
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary" [disabled]="editCatalogForm[catalogItem.id].invalid">Готово</button>
+        </div>
+
+        <div class="col-auto">
+          <button
+            type="button"
+            (click)="onDismissEditCatalog(catalogItem)"
+            class="btn btn-secondary">
+            Відміна
+          </button>
+        </div>
+      </form>
+
+      <ul class="list-group list-group-flush list-group-item-secondary mt-2">
+        <li class="list-group-item" *ngFor="let subCatalogItem of catalogItem.subCatalogs" [id]="'sc-' + subCatalogItem.id">
+
+          <span *ngIf="!ifEditSubCatalog[subCatalogItem.id]" class="text-primary me-2">{{subCatalogItem.subCatalogName}}</span>
+          <span *ngIf="!ifEditSubCatalog[subCatalogItem.id]" class="text-secondary">{{subCatalogItem.subCatalogType}}</span>
+
+          <span *ngIf="!ifEditSubCatalog[subCatalogItem.id]" class="float-end">
+            <button class="btn btn-sm btn-warning me-2" (click)="editSubCatalog(subCatalogItem)">Редагувати</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteSubCatalog(subCatalogItem.id)">Видалити</button>
+          </span>
+
+          <form *ngIf="ifEditSubCatalog[subCatalogItem.id]" [formGroup]="editSubCatalogForm[subCatalogItem.id]" class="row g-2" (ngSubmit)="onModifySubCatalog(subCatalogItem)">
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Назва підкатегорії"
+                formControlName="subCatalogName"
+              />
+              <div *ngIf="editSubCatalogForm[subCatalogItem.id].get('subCatalogName')?.invalid && editSubCatalogForm[subCatalogItem.id].get('subCatalogName')?.touched" class="text-danger">
+                Subcategory name is required.
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <select class="form-select" formControlName="subCatalogType">
+                <option *ngFor="let type of subCatalogTypes" [value]="type.type">
+                  {{ type.type }}
+                </option>
+              </select>
+              <div *ngIf="editSubCatalogForm[subCatalogItem.id].get('subCatalogType')?.invalid && editSubCatalogForm[subCatalogItem.id].get('subCatalogType')?.touched" class="text-danger">
+                Please select a type.
+              </div>
+            </div>
+
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary" [disabled]="editSubCatalogForm[subCatalogItem.id].invalid">Готово</button>
+            </div>
+
+            <div class="col-auto">
+              <button
+                type="button"
+                (click)="onDismissEditSubCatalog(subCatalogItem)"
+                class="btn btn-secondary">
+                Відміна
+              </button>
+            </div>
+          </form>
+        </li>
+
+        <li class="list-group-item">
+          <form [formGroup]="subCatalogForms[catalogItem.id]" class="row g-2" (ngSubmit)="onSubmitSubCategory(catalogItem.id)">
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Назва підкатегорії"
+                formControlName="subCatalogName"
+              />
+              <div *ngIf="subCatalogForms[catalogItem.id].get('subCatalogName')?.invalid && subCatalogForms[catalogItem.id].get('subCatalogName')?.touched" class="text-danger">
+                Subcategory name is required.
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <select class="form-select" formControlName="subCatalogType">
+                <option *ngFor="let type of subCatalogTypes" [value]="type.id">
+                  {{ type.type }}
+                </option>
+              </select>
+              <div *ngIf="subCatalogForms[catalogItem.id].get('subCatalogType')?.invalid && subCatalogForms[catalogItem.id].get('subCatalogType')?.touched" class="text-danger">
+                Please select a type.
+              </div>
+            </div>
+
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary" [disabled]="subCatalogForms[catalogItem.id].invalid">Готово</button>
+            </div>
+
+            <div class="col-auto">
+              <button
+                type="button"
+                (click)="onDismissSubCatalog(catalogItem.id)"
+                class="btn btn-secondary">
+                Відміна
+              </button>
+            </div>
+          </form>
+        </li>
+      </ul>
+
+    </li>
+
+    <li class="list-group-item">
+      <form [formGroup]="catalogForm" class="row g-2" (ngSubmit)="onSubmitCatalog()">
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Назва категорії"
+            formControlName="catalogName"
+          />
+          <div *ngIf="catalogForm.get('catalogName')?.invalid && catalogForm.get('catalogName')?.touched" class="text-danger">
+            Catalog name is required.
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary" [disabled]="catalogForm.invalid">Готово</button>
+        </div>
+
+        <div class="col-auto">
+          <button
+            type="button"
+            (click)="onDismissCatalog()"
+            class="btn btn-secondary">
+            Відміна
+          </button>
+        </div>
+      </form>
+    </li>
+
+  </ul>
+
+</div>
