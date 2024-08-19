@@ -1,1 +1,96 @@
-<p>producer-edit works!</p>
+<h1>Редагування виробників</h1>
+<ul class="list-group list-group-flush list-group-item-primary">
+
+  <li *ngFor="let producer of producers" class="list-group-item text-primary" [id]="'p-'+producer.id">
+    <span  *ngIf="!ifEditProducer[producer.id]">{{producer.producerName}}</span>
+
+    <form *ngIf="ifEditProducer[producer.id]"
+          [formGroup]="editProducerForm[producer.id]" class="row g-2"
+          (ngSubmit)="onSubmitEditProducer(producer)">
+      <div class="col-md-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Назва виробника"
+          formControlName="producerName"
+        />
+        <div *ngIf="editProducerForm[producer.id].get('producerName')?.invalid && editProducerForm[producer.id].get('producerName')?.touched" class="text-danger">
+          Producer name is required.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="ЕДРПОУ"
+          formControlName="producerEdrpou"
+        />
+      </div>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" [disabled]="editProducerForm[producer.id].invalid">Готово</button>
+      </div>
+
+      <div class="col-auto">
+        <button
+          type="button"
+          (click)="onDismissEditProducer(producer)"
+          class="btn btn-secondary">
+          Відміна
+        </button>
+      </div>
+    </form>
+
+    <span *ngIf="!ifEditProducer[producer.id]" class="float-end">
+        <button class="btn btn-sm btn-warning me-2" (click)="onEditProducer(producer)">Редагувати</button>
+        <button class="btn btn-sm btn-danger" (click)="onDeleteProducer(producer)">Видалити</button>
+    </span>
+
+  </li>
+
+  <li class="list-group-item text-primary">
+    <form [formGroup]="producerFrom" class="row g-2"
+          (ngSubmit)="onSubmit()">
+      <div class="col-md-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Назва виробника"
+          formControlName="producerName"
+        />
+        <div *ngIf="producerFrom.get('producerName')?.invalid && producerFrom.get('producerName')?.touched" class="text-danger">
+          Producer name is required.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="ЕДРПОУ"
+          formControlName="producerEdrpou"
+        />
+
+        <div *ngIf="producerFrom.get('producerEdrpou')?.invalid && producerFrom.get('producerEdrpou')?.touched" class="text-danger">
+          Producer Edrpou is required.
+        </div>
+
+      </div>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" [disabled]="producerFrom.invalid">Готово</button>
+      </div>
+
+      <div class="col-auto">
+        <button
+          type="button"
+          (click)="onDismiss()"
+          class="btn btn-secondary">
+          Відміна
+        </button>
+      </div>
+    </form>
+  </li>
+
+</ul>
