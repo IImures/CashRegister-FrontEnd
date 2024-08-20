@@ -1,0 +1,26 @@
+.card {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  color: #a6a6a6;
+  background-color: #dcdcdc;
+}
+
+.card i {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}

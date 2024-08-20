@@ -1,0 +1,150 @@
+<h3>Cтворення товару</h3>
+
+<form [formGroup]="itemForm" class="flex-column g-2"
+      (ngSubmit)="onSubmit()">
+  <div class="col-md-4">
+    <label>Назва</label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Назва товару"
+      formControlName="productName"
+    />
+    <div *ngIf="itemForm.get('productName')?.invalid && itemForm.get('productName')?.touched" class="text-danger">
+      Item name is required.
+    </div>
+  </div>
+
+  <div class="row col-md-4">
+    <div class="col">
+      <label>Категорія</label>
+      <select class="form-control" formControlName="selectedCatalog" (change)="onCatalogChange()">
+        <option *ngFor="let catalog of catalogs" [value]="catalog.id">{{ catalog.catalogName }}</option>
+      </select>
+    </div>
+    <div *ngIf="itemForm.get('selectedCatalog')?.invalid && itemForm.get('selectedCatalog')?.touched" class="text-danger">
+      Catalog is required.
+    </div>
+  </div>
+
+  <div class="row col-md-4" >
+<!--       *ngIf="filteredSubCatalogs?.length"-->
+    <div class="col">
+      <label>Підкатегорія</label>
+      <select class="form-control" formControlName="subCatalogId">
+        <option *ngFor="let subCatalog of filteredSubCatalogs" [value]="subCatalog.id">
+          {{ subCatalog.subCatalogName }}
+        </option>
+      </select>
+    </div>
+    <div *ngIf="itemForm.get('subCatalogId')?.invalid && itemForm.get('subCatalogId')?.touched" class="text-danger">
+      SubCatalog is required.
+    </div>
+  </div>
+
+  <div class="row col-md-4">
+    <div class="col">
+      <label>Виробники</label>
+      <select class="form-control" formControlName="producerId">
+        <option *ngFor="let producer of producers" [value]="producer.id">{{ producer.producerName }}</option>
+      </select>
+    </div>
+    <div *ngIf="itemForm.get('producerId')?.invalid && itemForm.get('producerId')?.touched" class="text-danger">
+      Producer is required.
+    </div>
+  </div>
+
+
+  <div class="row ">
+    <div class="col">
+      <label>Титул</label>
+      <ckeditor
+        *ngIf="editorLoaded"
+        [editor]="Editor"
+        [config]="ckConfig"
+        formControlName="title"
+      >
+      </ckeditor>
+    </div>
+    <div *ngIf="itemForm.get('title')?.invalid && itemForm.get('title')?.touched" class="text-danger">
+      Title is required.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label>Опис</label>
+      <ckeditor
+        *ngIf="editorLoaded"
+        [editor]="Editor"
+        [config]="ckConfig"
+        formControlName="description"
+      >
+      </ckeditor>
+    </div>
+    <div *ngIf="itemForm.get('description')?.invalid && itemForm.get('description')?.touched" class="text-danger">
+      Description is required.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label>Характеристики</label>
+      <ckeditor
+        *ngIf="editorLoaded"
+        [editor]="Editor"
+        [config]="ckConfig"
+        formControlName="characteristics"
+      >
+      </ckeditor>
+    </div>
+    <div *ngIf="itemForm.get('characteristics')?.invalid && itemForm.get('characteristics')?.touched" class="text-danger">
+      Characteristics is required.
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label>Картинка для каталогу</label>
+    <input
+      type="file"
+      (change)="onImageSelected($event)"
+      class="form-control"
+      placeholder="Назва виробника"
+      formControlName="image"
+      accept=".jpg, .jpeg, .png"
+    />
+    <div *ngIf="itemForm.get('image')?.invalid && itemForm.get('image')?.touched" class="text-danger">
+      Picture icon is required.
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label>Картинка для титульоі сторінки</label>
+    <input
+      type="file"
+      (change)="onTitleImageSelected($event)"
+      class="form-control"
+      placeholder="Назва виробника"
+      formControlName="titleImage"
+      accept=".jpg, .jpeg, .png"
+    />
+    <div *ngIf="itemForm.get('titleImage')?.invalid && itemForm.get('titleImage')?.touched" class="text-danger">
+      Title image icon is required.
+    </div>
+  </div>
+
+  <div class = 'row mt-2'>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid" >Готово</button> [disabled]="itemForm.invalid"
+  </div>
+
+  <div class="col-auto">
+    <button
+      type="button"
+      (click)="onDismiss()"
+      class="btn btn-secondary">
+      Відміна
+    </button>
+  </div>
+  </div>
+</form>

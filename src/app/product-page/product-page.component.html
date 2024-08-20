@@ -10,7 +10,7 @@
     </div>
     <div class="col-lg-8 d-flex flex-column justify-content-center">
       <h2 class="product-title">{{ description.productName }}</h2>
-      <p class="font-weight-bold">{{description.title}}</p>
+      <p class="font-weight-bold" [innerHTML]="description.title"></p>
     </div>
   </div>
 

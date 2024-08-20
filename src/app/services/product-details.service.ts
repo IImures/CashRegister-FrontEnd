@@ -5,6 +5,8 @@ import {ListItemDetails} from "../interfaces/list-item-details";
 import {Observable} from "rxjs";
 import {ProductPageDetails} from "../interfaces/product-page-details";
 import {environment} from "../../environments/environment";
+import {ProductResponse} from "../interfaces/product-response";
+import {ProductRequest} from "../interfaces/product-request";
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +47,25 @@ export class ProductDetailsService {
       producers ='&producers=' + selectedProducers.join(', ');
     }
     return this.http.get<PageResponse<ListItemDetails>>(`${this.url}/subcatalog/${subCatalogId}?name=${searchArg}${producers}`)
+  }
+
+  createProduct(productRequest : ProductRequest) {
+    return this.http.post<ProductResponse>(`${this.url}`, productRequest);
+  }
+
+  createDescription(productId: string, title: string, description: string, characteristics: string) {
+    return this.http.post(`${this.url}/${productId}/description`, {
+      "title": title,
+      "description": description,
+      "characteristics": characteristics
+    });
+  }
+
+  addImageToProduct(productId: string, image: FormData) {
+    return this.http.put(`${this.url}/${productId}/image`, image)
+  }
+
+  addImageToProductDescription(productId: string, titleImage: FormData) {
+    return this.http.put(`${this.url}/${productId}/description/image`, titleImage)
   }
 }

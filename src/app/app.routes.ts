@@ -6,8 +6,12 @@ import {ProductPageComponent} from "./product-page/product-page.component";
 import {EditorPageComponent} from "./editor-page/editor-page.component";
 import {CatalogEditComponent} from "./editor-page/catalog-edit/catalog-edit.component";
 import {ProducerEditComponent} from "./editor-page/producer-edit/producer-edit.component";
-import {ItemEditComponent} from "./editor-page/item-edit/item-edit.component";
 import {EditHomeComponent} from "./editor-page/edit-home/edit-home.component";
+import {ItemEditHomeComponent} from "./editor-page/item-edit-home/item-edit-home.component";
+import {ModeSelectorComponent} from "./editor-page/item-edit-home/mode-selector/mode-selector.component";
+import {UpdateItemComponent} from "./editor-page/item-edit-home/update-item/update-item.component";
+import {DeleteItemComponent} from "./editor-page/item-edit-home/delete-item/delete-item.component";
+import {CreateItemComponent} from "./editor-page/item-edit-home/create-item/create-item.component";
 
 export const routes: Routes = [
   {
@@ -50,7 +54,26 @@ export const routes: Routes = [
       },
       {
         path: 'item',
-        component: ItemEditComponent
+        component: ItemEditHomeComponent,
+        children:[
+          {
+            path: '',
+            component: ModeSelectorComponent,
+          },
+          {
+            path: 'update',
+            component: UpdateItemComponent,
+          },
+          {
+            path: 'delete',
+            component: DeleteItemComponent,
+          },
+          {
+            path: 'create',
+            component: CreateItemComponent,
+          }
+
+        ]
       }
     ]
   },
