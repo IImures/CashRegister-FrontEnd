@@ -110,15 +110,19 @@ export class CreateItemComponent implements OnInit{
       "description" : data.description,
       "characteristics" : table,
     }
+    let descImgCreated = false;
+    let productImgCreated = false;
     this.productService.createProduct(productRequest).subscribe({
       next: (value : ProductResponse) => {
-        console.log(value);
         const productId = value.id;
 
         const titleImageData = new FormData();
         titleImageData.append("image", this.titleImage, this.titleImage.name);
         this.productService.addImageToProductDescription(productId, titleImageData)
           .subscribe({
+            next: () =>{
+              descImgCreated = true;
+            },
             error : err => {
               console.log('error creating titleImage');
               console.log(err);
@@ -129,12 +133,21 @@ export class CreateItemComponent implements OnInit{
         imageData.append("image", this.image, this.image.name);
         this.productService.addImageToProduct(productId, imageData)
           .subscribe({
+            next: () => {
+              productImgCreated = true;
+            },
             error : err => {
               console.log('error creating image');
               console.log(err);
             }
           });
-
+        if(!descImgCreated){
+          alert("Титульна картинка не була створена");
+        }
+        if(!productImgCreated){
+          alert("Картинка продукту не була створена");
+        }
+        alert("Продукт створенно успішно")
       },
 
       error: err => {
