@@ -68,4 +68,8 @@ export class ProductDetailsService {
   addImageToProductDescription(productId: string, titleImage: FormData) {
     return this.http.put(`${this.url}/${productId}/description/image`, titleImage)
   }
+
+  deleteItem(productId: number) {
+    return this.http.delete(`${this.url}/${productId}`);
+  }
 }
