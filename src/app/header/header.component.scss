@@ -6,11 +6,9 @@
 }
 
 .navbar{
-  //border-bottom-right-radius: 1rem;
-  //border-bottom-left-radius: 1rem;
   z-index: 1;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4); /* Shadow settings */
-
+  width: 100vw;
 }
 
 #toggle-btn{
@@ -20,21 +18,6 @@
 }
 
 
-.sidebar {
-  position: fixed;
-  display: block;
-  top: 0;
-  right: 0;
-  height: 100%;
-  padding: 20px;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
-  width: 350px;
-  background-color: #FFFFFF;
-  border-right: 1px solid #dee2e6;
-  z-index: 1000;
-  transition: transform 0.3s ease;
-}
 
 .btn{
   padding: 0;
@@ -102,5 +85,12 @@
     width: 100%; /* Full width on smaller screens */
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+  }
+
+}
+
+@media (max-width: 412px) {
+  .navbar-brand h2{
+    font-size: 1rem;
   }
 }
