@@ -12,6 +12,8 @@ import {ModeSelectorComponent} from "./editor-page/item-edit-home/mode-selector/
 import {UpdateItemComponent} from "./editor-page/item-edit-home/update-item/update-item.component";
 import {DeleteItemComponent} from "./editor-page/item-edit-home/delete-item/delete-item.component";
 import {CreateItemComponent} from "./editor-page/item-edit-home/create-item/create-item.component";
+import {SelectPageComponent} from "./editor-page/item-edit-home/update-item/select-page/select-page.component";
+import {UpdatePageComponent} from "./editor-page/item-edit-home/update-item/update-page/update-page.component";
 
 export const routes: Routes = [
   {
@@ -63,6 +65,16 @@ export const routes: Routes = [
           {
             path: 'update',
             component: UpdateItemComponent,
+            children:[
+              {
+                path: "",
+                component: SelectPageComponent
+              },
+              {
+                path:":id",
+                component: UpdatePageComponent
+              }
+            ]
           },
           {
             path: 'delete',
