@@ -1,17 +1,14 @@
 
-@media (max-width: 720px) {
-
-}
 
 .outer-container{
   background-color: #939393;
   margin: 0;
-  //height: 100vh;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   padding: 5rem 7rem;
 }
+
 
 .inner-container{
   display: flex;
@@ -47,4 +44,39 @@ p{
 }
 .media{
   text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .outer-container{
+    padding: 1rem 2rem;
+  }
+  .container{
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 826px) {
+  .container{
+    max-width: 100%;
+  }
+
+  .outer-container{
+    padding: 0;
+  }
+
+  .inner-container{
+    border-radius: 0;
+    margin: 0;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .info{
+    font-size: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: 50%;
+    height: auto;
+  }
 }

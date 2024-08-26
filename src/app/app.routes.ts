@@ -26,7 +26,7 @@ export const routes: Routes = [
     component: HomePageComponent
   },
   {
-    path: 'find-us',
+    path: 'about-us',
     component: FindUsComponent
   },
   {

@@ -17,20 +17,8 @@ export class NavigationListComponent {
 
   navigationList: NavigationItem[] =[
     {
-      title: ">> Як нас знайти?",
-      url: "/find-us"
-    },
-    {
-      title: ">> Часті питання",
-      url: "#"
-    },
-    {
-      title: ">> Приклад",
-      url: "#"
-    },
-    {
-      title: ">> Приклад",
-      url: "#"
+      title: ">> Про нас",
+      url: "/about-us"
     },
   ];
 
