@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {ListItemDetails} from "../../../../interfaces/list-item-details";
 import {CatalogItem} from "../../../../interfaces/catalog-item";
-import {ProductDetailsService} from "../../../../services/product-details.service";
-import {SideBarService} from "../../../../services/side-bar.service";
+import {ProductService} from "../../../../services/product.service";
+import {CatalogService} from "../../../../services/catalog.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {PageResponse} from "../../../../interfaces/page-response";
 import {RouterLink} from "@angular/router";
@@ -31,8 +31,8 @@ export class SelectPageComponent implements OnInit{
   selectedSubCatalog!: string;
 
   constructor(
-    private productService: ProductDetailsService,
-    private catalogService: SideBarService,
+    private productService: ProductService,
+    private catalogService: CatalogService,
     private sanitizer: DomSanitizer,
   ) {
   }

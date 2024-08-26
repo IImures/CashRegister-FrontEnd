@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ListItemDetails} from "../../../interfaces/list-item-details";
-import {ProductDetailsService} from "../../../services/product-details.service";
+import {ProductService} from "../../../services/product.service";
 import {CatalogItem} from "../../../interfaces/catalog-item";
-import {SideBarService} from "../../../services/side-bar.service";
+import {CatalogService} from "../../../services/catalog.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PageResponse} from "../../../interfaces/page-response";
@@ -32,8 +32,8 @@ export class DeleteItemComponent implements OnInit {
   selectedSubCatalog!: string;
 
   constructor(
-    private productService: ProductDetailsService,
-    private catalogService: SideBarService,
+    private productService: ProductService,
+    private catalogService: CatalogService,
     private sanitizer: DomSanitizer,
   ) {
   }

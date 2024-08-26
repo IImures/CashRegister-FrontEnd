@@ -7,7 +7,7 @@ import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class SideBarService {
+export class CatalogService {
 
   private url: string = `${environment.apiUrl}/${environment.apiVersion}/catalog`;
 

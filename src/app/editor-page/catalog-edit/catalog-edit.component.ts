@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CatalogItem} from "../../interfaces/catalog-item";
-import {SideBarService} from "../../services/side-bar.service";
+import {CatalogService} from "../../services/catalog.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {SubCatalogItem} from "../../interfaces/sub-catalog-item";
@@ -40,7 +40,7 @@ export class CatalogEditComponent implements OnInit {
   editSubCatalogForm: {[key: string]: FormGroup} = {};
 
   constructor(
-    private catalogService: SideBarService,
+    private catalogService: CatalogService,
     private subCatalogService: SubCatalogService,
     private fb: FormBuilder
   ) {

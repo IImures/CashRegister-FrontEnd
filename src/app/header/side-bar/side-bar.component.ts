@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgOptimizedImage} from "@angular/common";
 import {SidebarHeaderService} from "../sidebar-header.service";
 import {RouterLink, RouterLinkActive} from '@angular/router';
-import {SideBarService} from "../../services/side-bar.service";
+import {CatalogService} from "../../services/catalog.service";
 import {CatalogItem} from "../../interfaces/catalog-item";
 @Component({
   selector: 'app-side-bar',
@@ -23,7 +23,7 @@ export class SideBarComponent implements OnInit {
 
   constructor(
     public sidebarHeader: SidebarHeaderService,
-    private sidebarService: SideBarService
+    private sidebarService: CatalogService
   ) {
     this.sidebarHeader = sidebarHeader;
   }

@@ -11,7 +11,7 @@ import {ProductRequest} from "../interfaces/product-request";
 @Injectable({
   providedIn: 'root'
 })
-export class ProductDetailsService {
+export class ProductService {
 
   private url: string = `${environment.apiUrl}/${environment.apiVersion}/product`;
 
@@ -52,14 +52,6 @@ export class ProductDetailsService {
   createProduct(productRequest : ProductRequest) {
     return this.http.post<ProductResponse>(`${this.url}`, productRequest);
   }
-
-  // createDescription(productId: string, title: string, description: string, characteristics: string) {
-  //   return this.http.post(`${this.url}/${productId}/description`, {
-  //     "title": title,
-  //     "description": description,
-  //     "characteristics": characteristics
-  //   });
-  // }
 
   addImageToProduct(productId: string, image: FormData) {
     return this.http.put(`${this.url}/${productId}/image`, image)

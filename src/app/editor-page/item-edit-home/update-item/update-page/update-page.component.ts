@@ -5,9 +5,9 @@ import {isPlatformBrowser, NgForOf, NgIf} from "@angular/common";
 import {ProducerDetails} from "../../../../interfaces/producer-details";
 import {CatalogItem} from "../../../../interfaces/catalog-item";
 import {SubCatalogItem} from "../../../../interfaces/sub-catalog-item";
-import {ProductDetailsService} from "../../../../services/product-details.service";
+import {ProductService} from "../../../../services/product.service";
 import {SubCatalogService} from "../../../../services/sub-catalog.service";
-import {SideBarService} from "../../../../services/side-bar.service";
+import {CatalogService} from "../../../../services/catalog.service";
 import {ProducerService} from "../../../../services/producer.service";
 import {ProductRequest} from "../../../../interfaces/product-request";
 import {ProductResponse} from "../../../../interfaces/product-response";
@@ -56,10 +56,10 @@ export class UpdatePageComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private productService: ProductDetailsService,
+    private productService: ProductService,
     private subCatalogService: SubCatalogService,
     private route: ActivatedRoute,
-    private catalogService: SideBarService,
+    private catalogService: CatalogService,
     private producerService: ProducerService,
     @Inject(PLATFORM_ID) platformId: Object
   ) {

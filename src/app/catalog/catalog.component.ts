@@ -6,7 +6,7 @@ import { Subscription } from "rxjs";
 import {CatalogItem} from "../interfaces/catalog-item";
 import {SubCatalogService} from "../services/sub-catalog.service";
 import {ListItemDetails} from "../interfaces/list-item-details";
-import {ProductDetailsService} from "../services/product-details.service";
+import {ProductService} from "../services/product.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ProducerService} from "../services/producer.service";
 import {ProducerDetails} from "../interfaces/producer-details";
@@ -51,7 +51,7 @@ export class CatalogComponent implements OnInit, OnDestroy {
    private sanitizer: DomSanitizer,
    private route: ActivatedRoute,
    private subCatalogService: SubCatalogService,
-   private productService: ProductDetailsService,
+   private productService: ProductService,
    private producerService: ProducerService,
  ){}
 

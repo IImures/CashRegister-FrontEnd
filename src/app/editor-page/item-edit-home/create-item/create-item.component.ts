@@ -1,12 +1,12 @@
 import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser, NgForOf, NgIf} from "@angular/common";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ProductDetailsService} from "../../../services/product-details.service";
+import {ProductService} from "../../../services/product.service";
 import {ProducerDetails} from "../../../interfaces/producer-details";
 import {SubCatalogItem} from "../../../interfaces/sub-catalog-item";
 import {SubCatalogService} from "../../../services/sub-catalog.service";
 import {ProducerService} from "../../../services/producer.service";
-import {SideBarService} from "../../../services/side-bar.service";
+import {CatalogService} from "../../../services/catalog.service";
 import {CatalogItem} from "../../../interfaces/catalog-item";
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import {ProductResponse} from "../../../interfaces/product-response";
@@ -46,9 +46,9 @@ export class CreateItemComponent implements OnInit{
 
   constructor(
     private fb: FormBuilder,
-    private productService: ProductDetailsService,
+    private productService: ProductService,
     private subCatalogService: SubCatalogService,
-    private catalogService: SideBarService,
+    private catalogService: CatalogService,
     private producerService: ProducerService,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
