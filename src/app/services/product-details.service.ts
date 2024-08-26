@@ -53,13 +53,13 @@ export class ProductDetailsService {
     return this.http.post<ProductResponse>(`${this.url}`, productRequest);
   }
 
-  createDescription(productId: string, title: string, description: string, characteristics: string) {
-    return this.http.post(`${this.url}/${productId}/description`, {
-      "title": title,
-      "description": description,
-      "characteristics": characteristics
-    });
-  }
+  // createDescription(productId: string, title: string, description: string, characteristics: string) {
+  //   return this.http.post(`${this.url}/${productId}/description`, {
+  //     "title": title,
+  //     "description": description,
+  //     "characteristics": characteristics
+  //   });
+  // }
 
   addImageToProduct(productId: string, image: FormData) {
     return this.http.put(`${this.url}/${productId}/image`, image)
@@ -71,5 +71,9 @@ export class ProductDetailsService {
 
   deleteItem(productId: number) {
     return this.http.delete(`${this.url}/${productId}`);
+  }
+
+  updateProduct(productRequest: ProductRequest, productId: string) {
+    return this.http.put<ProductResponse>(`${this.url}/${productId}`, productRequest);
   }
 }

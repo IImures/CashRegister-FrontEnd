@@ -40,8 +40,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    console.log("On init PP component");
-
     this.routeSubscription = this.route.paramMap.subscribe(params => {
       const productId = params.get('id');
       console.log(`productId ${productId}`);
@@ -80,7 +78,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log("Component ngOnDestroy");
     if (this.routeSubscription) {
       this.routeSubscription.unsubscribe();
     }
