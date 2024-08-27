@@ -1,0 +1,20 @@
+<div class="login-container">
+  <div class="login-form">
+    <h2 class="text-center mb-4">Login</h2>
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+    >
+      <div class="mb-3">
+        <label for="email" class="form-label">Пошта</label>
+        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Введіть пошту">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Пароль</label>
+        <input type="password" formControlName="password" class="form-control" id="password" placeholder="Введіть пароль">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Увійти</button>
+    </form>
+  </div>
+
+</div>
