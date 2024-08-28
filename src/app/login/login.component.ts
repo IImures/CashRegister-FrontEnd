@@ -32,6 +32,7 @@ export class LoginComponent {
   login() {
     const data = this.loginForm.value;
 
+    this.localStorage.deleteTokens();
     this.authService.login(data.email, data.password).subscribe(
       {
         next: (data : AuthResponse) => {

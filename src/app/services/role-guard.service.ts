@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from "@angular/router";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
 import {AuthService} from "./auth.service";
 import {LocalStorageService} from "./local-storage.service";
 import {catchError, map, Observable, of} from "rxjs";
@@ -11,6 +11,7 @@ export class RoleGuardService implements CanActivate {
 
   constructor(
     private authService: AuthService,
+    private router: Router,
     private localStorage: LocalStorageService,
   ) { }
 
@@ -20,7 +21,10 @@ export class RoleGuardService implements CanActivate {
 
     return this.authService.verify(token).pipe(
       map(() => true),
-      catchError(() => of(false))
+      catchError(() => {
+        this.router.navigate(['/login'], {replaceUrl: true});
+        return of(false)
+      })
     );
   }
 }

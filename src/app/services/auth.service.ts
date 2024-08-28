@@ -25,4 +25,9 @@ export class AuthService {
     let httpHeaders = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${this.url}/valid`, {}, { headers: httpHeaders });
   }
+
+  refresh(refreshToken: string) {
+    let httpHeaders = new HttpHeaders().set('Authorization', `Bearer ${refreshToken}`);
+    return this.http.post<AuthResponse>(`${this.url}/refresh`, {}, { headers: httpHeaders });
+  }
 }

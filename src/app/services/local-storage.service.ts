@@ -39,4 +39,13 @@ export class LocalStorageService {
   getToken() {
     return this.getItem('token');
   }
+
+  getRefreshToken() {
+    return this.getItem('refreshToken');
+  }
+
+  deleteTokens() {
+    this.removeItem('token');
+    this.removeItem('refreshToken');
+  }
 }
