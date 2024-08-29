@@ -1,0 +1,43 @@
+services:
+  cashregister-angular:
+    container_name: cashregister-front-end
+    image: 476114119262.dkr.ecr.eu-north-1.amazonaws.com/cashregister-webserver:angular
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - internalnet
+
+  cashregister-spring:
+    container_name: cashregister-back-end
+    image: 476114119262.dkr.ecr.eu-north-1.amazonaws.com/cashregister-webserver:spring
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://cashregister-db:5432/cash_register
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    networks:
+      - internalnet
+
+
+  cashregister-db:
+    container_name: cashregister-db
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: cash_register
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - internalnet
+
+
+networks:
+  internalnet:
+    driver: bridge
+
