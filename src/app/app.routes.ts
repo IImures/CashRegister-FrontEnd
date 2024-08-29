@@ -13,25 +13,30 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent
+    component: HomePageComponent,
+    title:"Main page"
   },
   {
     path: 'about-us',
-    component: FindUsComponent
+    component: FindUsComponent,
+    title:"About us"
   },
   {
     path: 'catalog/:categoryId/list/:subCategoryId',
     component: CatalogComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    title:"Catalog page"
   },
   {
     path: 'product/:id',
-    component:ProductPageComponent
+    component:ProductPageComponent,
+    title:"Product page"
   },
   {
       path: 'edit',
       canActivate: [RoleGuardService],
       loadComponent: ()=> import('./editor-page/editor-page.component').then(m=> m.EditorPageComponent),
+      title:"Editor page",
       children: [
         {
           path:'',
@@ -83,6 +88,10 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./login/login.component').then(m=> m.LoginComponent),
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
+  },
 
 ];
