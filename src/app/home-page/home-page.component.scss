@@ -1,26 +1,40 @@
 
 #carousel {
-  position: relative; /* Ensure the carousel can be positioned */
   background-image: url("/assets/slides/slide-bg.png");
-  background-size: cover; /* Scale the background image to cover the entire container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Prevent the background image from repeating */
-  width: 100%; /* Make sure the carousel takes the full width of its container */
-  height: 65vh; /* Make the carousel take the full height of the viewport */
-  overflow: hidden; /* Hide any overflowing content */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 65vh;
+  overflow: hidden;
 }
+
+.carousel-inner{
+  height: 100%;
+  display: flex;
+}
+
 .carousel-item{
-  height: 32rem;
-  //background-color: #777;
-  //left: 30%;
-  color: #FFFFFF;
-  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-item.active{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-item-start{
+  display: flex;
+}
+
+.carousel-item-next{
+  display: flex;
 }
 
 .container{
   position: absolute;
   bottom: 0;
-  //left: 50%;
   right: 0;
   padding-bottom: 50px;
 }
