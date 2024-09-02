@@ -14,7 +14,7 @@ import {NgForOf, NgOptimizedImage} from "@angular/common";
 export class GeneralInfoComponent {
 
   phones : string[]= [
-    "068-02-20-197", "123-45-67-890"
+    "123-45-67-890", "123-45-67-890"
   ]
 
   email : string = "igor.kalinchenko@gmail.com";
