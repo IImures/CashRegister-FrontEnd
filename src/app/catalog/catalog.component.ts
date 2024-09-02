@@ -59,7 +59,6 @@ export class CatalogComponent implements OnInit, OnDestroy {
     this.routeSubscription = this.route.paramMap.subscribe(params => {
       const categoryId = params.get('categoryId');
       const subCatalogId = params.get('subCategoryId');
-      console.log(`categoryId ${categoryId} subCatalogId ${subCatalogId}`);
       if (!categoryId || !subCatalogId) {
         console.log("Failed to get data from URL");
         return;

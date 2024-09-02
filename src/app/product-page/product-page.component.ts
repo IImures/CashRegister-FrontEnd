@@ -42,7 +42,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeSubscription = this.route.paramMap.subscribe(params => {
       const productId = params.get('id');
-      console.log(`productId ${productId}`);
       if ( !productId ) {
         console.log("Failed to get data from URL");
         return;
