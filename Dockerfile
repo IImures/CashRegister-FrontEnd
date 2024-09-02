@@ -1,9 +1,6 @@
-FROM node:20.16.0 as build
-WORKDIR /app
-COPY package*.json ./
+FROM node:alpine
+WORKDIR /usr/src/app
+COPY . /usr/src/app
+RUN npm install -g @angular/cli
 RUN npm install
-COPY . .
-RUN npm run build
-FROM nginx:stable
-COPY --from=build /app/dist/cashregister/browser /usr/share/nginx/html
-EXPOSE 80
+CMD ["ng", "serve", "--configuration=production","--host", "0.0.0.0"]

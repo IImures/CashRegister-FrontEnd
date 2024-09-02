@@ -1,17 +1,17 @@
-services:
+sengrvices:
   cashregister-angular:
     container_name: cashregister-front-end
-    image: 476114119262.dkr.ecr.eu-north-1.amazonaws.com/cashregister-webserver:angular
+    image: iimures/casreg:cashreg-fe
     ports:
-      - 80:80
+      - 4200:4200
     expose:
-      - 80
+      - 4200
     networks:
       - internalnet
 
   cashregister-spring:
     container_name: cashregister-back-end
-    image: 476114119262.dkr.ecr.eu-north-1.amazonaws.com/cashregister-webserver:spring
+    image: iimures/casreg:cashreg-be
     ports:
       - 8080:8080
     expose:
