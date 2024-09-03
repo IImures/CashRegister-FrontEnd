@@ -1,16 +1,16 @@
 import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser, NgForOf, NgIf} from "@angular/common";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ProductService} from "../../../services/product.service";
-import {ProducerDetails} from "../../../interfaces/producer-details";
-import {SubCatalogItem} from "../../../interfaces/sub-catalog-item";
-import {SubCatalogService} from "../../../services/sub-catalog.service";
-import {ProducerService} from "../../../services/producer.service";
-import {CatalogService} from "../../../services/catalog.service";
-import {CatalogItem} from "../../../interfaces/catalog-item";
+import {ProductService} from "../../../../services/product.service";
+import {ProducerDetails} from "../../../../interfaces/producer-details";
+import {SubCatalogItem} from "../../../../interfaces/sub-catalog-item";
+import {SubCatalogService} from "../../../../services/sub-catalog.service";
+import {ProducerService} from "../../../../services/producer.service";
+import {CatalogService} from "../../../../services/catalog.service";
+import {CatalogItem} from "../../../../interfaces/catalog-item";
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import {ProductResponse} from "../../../interfaces/product-response";
-import {ProductRequest} from "../../../interfaces/product-request";
+import {ProductResponse} from "../../../../interfaces/product-response";
+import {ProductRequest} from "../../../../interfaces/product-request";
 
 @Component({
   selector: 'app-create-item',

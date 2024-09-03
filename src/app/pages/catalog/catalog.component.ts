@@ -3,15 +3,15 @@ import {ActivatedRoute, RouterLink, RouterLinkActive} from "@angular/router";
 import {ListComponentComponent} from "./list-component/list-component.component";
 import {NgForOf, NgIf, NgOptimizedImage, SlicePipe} from "@angular/common";
 import { Subscription } from "rxjs";
-import {CatalogItem} from "../interfaces/catalog-item";
-import {SubCatalogService} from "../services/sub-catalog.service";
-import {ListItemDetails} from "../interfaces/list-item-details";
-import {ProductService} from "../services/product.service";
+import {CatalogItem} from "../../interfaces/catalog-item";
+import {SubCatalogService} from "../../services/sub-catalog.service";
+import {ListItemDetails} from "../../interfaces/list-item-details";
+import {ProductService} from "../../services/product.service";
 import {DomSanitizer} from "@angular/platform-browser";
-import {ProducerService} from "../services/producer.service";
-import {ProducerDetails} from "../interfaces/producer-details";
+import {ProducerService} from "../../services/producer.service";
+import {ProducerDetails} from "../../interfaces/producer-details";
 import {FormsModule} from "@angular/forms";
-import {PageResponse} from "../interfaces/page-response";
+import {PageResponse} from "../../interfaces/page-response";
 
 @Component({
   selector: 'app-catalog',

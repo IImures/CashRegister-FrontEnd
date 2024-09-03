@@ -1,31 +1,30 @@
 import {Component, OnInit} from '@angular/core';
-import {ListItemDetails} from "../../../interfaces/list-item-details";
-import {ProductService} from "../../../services/product.service";
-import {CatalogItem} from "../../../interfaces/catalog-item";
-import {CatalogService} from "../../../services/catalog.service";
 import {NgForOf, NgIf} from "@angular/common";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {PageResponse} from "../../../interfaces/page-response";
+import {ListItemDetails} from "../../../../../interfaces/list-item-details";
+import {CatalogItem} from "../../../../../interfaces/catalog-item";
+import {ProductService} from "../../../../../services/product.service";
+import {CatalogService} from "../../../../../services/catalog.service";
 import {DomSanitizer} from "@angular/platform-browser";
+import {PageResponse} from "../../../../../interfaces/page-response";
+import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-delete-item',
+  selector: 'app-select-page',
   standalone: true,
   imports: [
     NgForOf,
-    ReactiveFormsModule,
-    FormsModule,
-    NgIf
+    NgIf,
+    RouterLink
   ],
-  templateUrl: './delete-item.component.html',
-  styleUrl: './delete-item.component.scss'
+  templateUrl: './select-page.component.html',
+  styleUrl: './select-page.component.scss'
 })
-export class DeleteItemComponent implements OnInit {
+export class SelectPageComponent implements OnInit{
 
   products: ListItemDetails[] = [];
   catalogs: CatalogItem[] = [];
 
-  currentPage : number = 1;
+  currentPage : number = 0;
   totalPages : number = 0;
   limit: number = 20;
 
@@ -116,22 +115,5 @@ export class DeleteItemComponent implements OnInit {
 
   goToPage(page: number) {
     this.fetchData(this.selectedSubCatalog, page);
-  }
-
-  deleteItem(id: number) {
-    const confirmed = window.confirm('Точно видалити продукт?');
-    if (confirmed) {
-      this.productService.deleteItem(id).subscribe(
-        {
-          next: () =>{
-            alert("Операція вдалась");
-            this.fetchData(this.selectedSubCatalog, 1);
-          },
-          error: err => {
-            alert("Сталась помилка " + err.error.message);
-          }
-        }
-      );
-    }
   }
 }

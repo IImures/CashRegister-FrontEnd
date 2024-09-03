@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import {NgForOf, NgOptimizedImage} from "@angular/common";
+import {PhonePipe} from "../../../pipes/phone.pipe";
 
 @Component({
   selector: 'app-general-info',
   standalone: true,
   imports: [
     NgOptimizedImage,
-    NgForOf
+    NgForOf,
+    PhonePipe
   ],
   templateUrl: './general-info.component.html',
   styleUrl: './general-info.component.scss'
@@ -14,7 +16,7 @@ import {NgForOf, NgOptimizedImage} from "@angular/common";
 export class GeneralInfoComponent {
 
   phones : string[]= [
-    "123-45-67-890", "123-45-67-890"
+    "0956789993", "0974693986"
   ]
 
   email : string = "igor.kalinchenko@gmail.com";

@@ -13,7 +13,7 @@
        *ngFor="let phone of phones"
       href="tel:+380{{phone}}}"
     >
-      {{phone}}
+      {{phone | phone}}
     </a>
 
   </div>

@@ -2,18 +2,18 @@ import {Component, Inject, OnDestroy, OnInit, PLATFORM_ID} from '@angular/core';
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {isPlatformBrowser, NgForOf, NgIf} from "@angular/common";
-import {ProducerDetails} from "../../../../interfaces/producer-details";
-import {CatalogItem} from "../../../../interfaces/catalog-item";
-import {SubCatalogItem} from "../../../../interfaces/sub-catalog-item";
-import {ProductService} from "../../../../services/product.service";
-import {SubCatalogService} from "../../../../services/sub-catalog.service";
-import {CatalogService} from "../../../../services/catalog.service";
-import {ProducerService} from "../../../../services/producer.service";
-import {ProductRequest} from "../../../../interfaces/product-request";
-import {ProductResponse} from "../../../../interfaces/product-response";
+import {ProducerDetails} from "../../../../../interfaces/producer-details";
+import {CatalogItem} from "../../../../../interfaces/catalog-item";
+import {SubCatalogItem} from "../../../../../interfaces/sub-catalog-item";
+import {ProductService} from "../../../../../services/product.service";
+import {SubCatalogService} from "../../../../../services/sub-catalog.service";
+import {CatalogService} from "../../../../../services/catalog.service";
+import {ProducerService} from "../../../../../services/producer.service";
+import {ProductRequest} from "../../../../../interfaces/product-request";
+import {ProductResponse} from "../../../../../interfaces/product-response";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, RouterLink} from "@angular/router";
-import {ProductPageDetails} from "../../../../interfaces/product-page-details";
+import {ProductPageDetails} from "../../../../../interfaces/product-page-details";
 
 @Component({
   selector: 'app-update-page',

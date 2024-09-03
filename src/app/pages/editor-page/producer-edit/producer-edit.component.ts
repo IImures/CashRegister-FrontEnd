@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ProducerDetails} from "../../interfaces/producer-details";
-import {ProducerService} from "../../services/producer.service";
+import {ProducerDetails} from "../../../interfaces/producer-details";
+import {ProducerService} from "../../../services/producer.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import {NgIf, NgOptimizedImage} from "@angular/common";
-import {ProductPageDetails} from "../interfaces/product-page-details";
-import {ProductService} from "../services/product.service";
+import {ProductPageDetails} from "../../interfaces/product-page-details";
+import {ProductService} from "../../services/product.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthService} from "../services/auth.service";
-import {AuthResponse} from "../interfaces/authResponse";
-import {LocalStorageService} from "../services/local-storage.service";
+import {AuthService} from "../../services/auth.service";
+import {LocalStorageService} from "../../services/local-storage.service";
+import {AuthResponse} from "../../interfaces/authResponse";
+
 
 @Component({
   selector: 'app-login',

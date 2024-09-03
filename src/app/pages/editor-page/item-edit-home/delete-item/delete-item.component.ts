@@ -1,30 +1,31 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
 import {ListItemDetails} from "../../../../interfaces/list-item-details";
-import {CatalogItem} from "../../../../interfaces/catalog-item";
 import {ProductService} from "../../../../services/product.service";
+import {CatalogItem} from "../../../../interfaces/catalog-item";
 import {CatalogService} from "../../../../services/catalog.service";
-import {DomSanitizer} from "@angular/platform-browser";
+import {NgForOf, NgIf} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PageResponse} from "../../../../interfaces/page-response";
-import {RouterLink} from "@angular/router";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-select-page',
+  selector: 'app-delete-item',
   standalone: true,
   imports: [
     NgForOf,
-    NgIf,
-    RouterLink
+    ReactiveFormsModule,
+    FormsModule,
+    NgIf
   ],
-  templateUrl: './select-page.component.html',
-  styleUrl: './select-page.component.scss'
+  templateUrl: './delete-item.component.html',
+  styleUrl: './delete-item.component.scss'
 })
-export class SelectPageComponent implements OnInit{
+export class DeleteItemComponent implements OnInit {
 
   products: ListItemDetails[] = [];
   catalogs: CatalogItem[] = [];
 
-  currentPage : number = 0;
+  currentPage : number = 1;
   totalPages : number = 0;
   limit: number = 20;
 
@@ -115,5 +116,22 @@ export class SelectPageComponent implements OnInit{
 
   goToPage(page: number) {
     this.fetchData(this.selectedSubCatalog, page);
+  }
+
+  deleteItem(id: number) {
+    const confirmed = window.confirm('Точно видалити продукт?');
+    if (confirmed) {
+      this.productService.deleteItem(id).subscribe(
+        {
+          next: () =>{
+            alert("Операція вдалась");
+            this.fetchData(this.selectedSubCatalog, 1);
+          },
+          error: err => {
+            alert("Сталась помилка " + err.error.message);
+          }
+        }
+      );
+    }
   }
 }

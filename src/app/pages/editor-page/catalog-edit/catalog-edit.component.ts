@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {CatalogItem} from "../../interfaces/catalog-item";
-import {CatalogService} from "../../services/catalog.service";
+import {CatalogItem} from "../../../interfaces/catalog-item";
+import {CatalogService} from "../../../services/catalog.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {SubCatalogItem} from "../../interfaces/sub-catalog-item";
-import {SubCatalogService} from "../../services/sub-catalog.service";
+import {SubCatalogItem} from "../../../interfaces/sub-catalog-item";
+import {SubCatalogService} from "../../../services/sub-catalog.service";
 
 @Component({
   selector: 'app-catalog-edit',

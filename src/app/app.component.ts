@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {HeaderComponent} from "./header/header.component";
 import {NavigationEnd, Router, RouterOutlet} from "@angular/router";
-import {FooterComponent} from "./footer/footer.component";
+import {FooterComponent} from "./pages/footer/footer.component";
 import {NgIf} from "@angular/common";
 import {environment} from "../environments/environment";
 
