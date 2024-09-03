@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NgForOf, NgOptimizedImage} from "@angular/common";
-import {loadavg} from "node:os";
+
 
 @Component({
   selector: 'app-media-links',

@@ -1,6 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {isPlatformBrowser, NgIf} from "@angular/common";
 import { PLATFORM_ID, Inject } from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
