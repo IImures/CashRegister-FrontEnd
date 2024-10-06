@@ -1,27 +1,50 @@
 # Cashregister
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+This is a frontend part of a project created for a Law Firm, made in order to help the firm advertise their services, publish posts, and easily manage client requests.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Images](#images)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Service Advertising: Promote the business services effectively.
+- Product Display: Showcase items currently in stock with details.
 
-## Build
+## Technology Stack
+### Frontend
+- Framework: Angular
+  - Languages: TypeScript, HTML, CSS
+- Libraries:
+  - RxJS for reactive data handling
+  - Angular Router for page navigation
+  - Bootstrap for easy styling
+### Backend 
+  Backend is located in separate repository: [CashRegister-BackEnd](https://github.com/IImures/CashRegister-BackEnd)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
+  1. **Clone Repository**:
+     ```sh
+       git clone https://github.com/IImures/CashRegister-FrontEnd.git
+       cd CashRegister-FrontEnd
+     ```
+  2. **Install dependencies**
+      ```sh
+        npm install
+      ```
+  3. **Start Angular server**
+      ```sh
+        ng serve
+      ```
+## Configuration
+You can configure different environment variables that will change depending on project state(production or not) in `src/environments` folder
+## Images
+![image](https://github.com/user-attachments/assets/4f1b11a2-d096-4fd0-aa98-8e6b4af489ff)
+![image](https://github.com/user-attachments/assets/667d5686-481c-43c8-8cd3-20b1ad0d14be)
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
