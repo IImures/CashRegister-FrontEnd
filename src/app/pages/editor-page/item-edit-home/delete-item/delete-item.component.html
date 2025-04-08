@@ -17,8 +17,8 @@
 <ul class="list-group list-group-flush" *ngIf="products">
   <li class="m-2 list-group-item" *ngFor="let product of products">
 
-    <img *ngIf="product.imageData && product.imageData.length > 22; else fallbackImage"
-         [src]="product.imageUrl"
+    <img
+      [ngSrc]="environment.apiUrl + '/' + environment.apiVersion + '/product/' + product.id + '/image'"
          alt="Image of a product"
          class="me-1"
          width="60"

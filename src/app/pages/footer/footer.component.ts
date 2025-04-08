@@ -18,4 +18,6 @@ import {NavigationListComponent} from "./navigation-list/navigation-list.compone
 })
 export class FooterComponent {
 
+  currentYear: number = new Date().getFullYear();
+
 }

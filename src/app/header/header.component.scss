@@ -8,7 +8,11 @@
 .navbar{
   z-index: 1;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4); /* Shadow settings */
-  width: 100vw;
+  width: 100%;
+}
+
+h1{
+  font-size: calc(1.325rem + 0.9vw);
 }
 
 #toggle-btn{
@@ -90,7 +94,7 @@
 }
 
 @media (max-width: 412px) {
-  .navbar-brand h2{
+  .navbar-brand h1{
     font-size: 1rem;
   }
 }

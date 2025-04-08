@@ -2,6 +2,7 @@ import {Component, Input,} from '@angular/core';
 import { NgIf, NgOptimizedImage} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {ListItemDetails} from "../../../interfaces/list-item-details";
+import {environment} from "../../../../environments/environment";
 
 
 @Component({
@@ -23,4 +24,5 @@ export class ListComponentComponent{
   constructor(
   ) {}
 
+  protected readonly environment = environment;
 }

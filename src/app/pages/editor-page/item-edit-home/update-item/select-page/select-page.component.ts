@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {ListItemDetails} from "../../../../../interfaces/list-item-details";
 import {CatalogItem} from "../../../../../interfaces/catalog-item";
 import {ProductService} from "../../../../../services/product.service";
@@ -7,6 +7,7 @@ import {CatalogService} from "../../../../../services/catalog.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {PageResponse} from "../../../../../interfaces/page-response";
 import {RouterLink} from "@angular/router";
+import {environment} from "../../../../../../environments/environment";
 
 @Component({
   selector: 'app-select-page',
@@ -14,7 +15,8 @@ import {RouterLink} from "@angular/router";
   imports: [
     NgForOf,
     NgIf,
-    RouterLink
+    RouterLink,
+    NgOptimizedImage
   ],
   templateUrl: './select-page.component.html',
   styleUrl: './select-page.component.scss'
@@ -33,7 +35,6 @@ export class SelectPageComponent implements OnInit{
   constructor(
     private productService: ProductService,
     private catalogService: CatalogService,
-    private sanitizer: DomSanitizer,
   ) {
   }
 
@@ -70,29 +71,29 @@ export class SelectPageComponent implements OnInit{
       {
         next: data => {
           this.getPages(data);
-          this.getProductImages();
+          // this.getProductImages();
         }
       }
     )
   }
 
-  private getProductImages() {
-    this.products.forEach(
-      component => {
-        this.productService.getProductImage(component.id).subscribe(
-          {
-            next: async (data) => {
-              component.imageData = await data.text();
-              component.imageUrl = this.sanitizer.bypassSecurityTrustUrl(component.imageData);
-            },
-            error: err => {
-              console.log(err);
-            }
-          }
-        )
-      }
-    );
-  }
+  // private getProductImages() {
+  //   this.products.forEach(
+  //     component => {
+  //       this.productService.getProductImage(component.id).subscribe(
+  //         {
+  //           next: async (data) => {
+  //             component.imageData = await data.text();
+  //             component.imageUrl = this.sanitizer.bypassSecurityTrustUrl(component.imageData);
+  //           },
+  //           error: err => {
+  //             console.log(err);
+  //           }
+  //         }
+  //       )
+  //     }
+  //   );
+  // }
 
   private getPages(productDetails: PageResponse<ListItemDetails>) {
     this.products = productDetails.content;
@@ -116,4 +117,6 @@ export class SelectPageComponent implements OnInit{
   goToPage(page: number) {
     this.fetchData(this.selectedSubCatalog, page);
   }
+
+  protected readonly environment = environment;
 }

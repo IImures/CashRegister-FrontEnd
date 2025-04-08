@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, makeStateKey, TransferState} from '@angular/core';
 import {NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import {HeaderComponent} from "./header/header.component";
 import {NavigationEnd, Router, RouterOutlet} from "@angular/router";
@@ -26,21 +26,38 @@ export class AppComponent {
   showHeader = true;
   showFooter = true;
 
-  constructor(private router: Router) {
+  private static APP_STATE_KEY = makeStateKey<{ showHeader: boolean; showFooter: boolean }>('app-state');
+
+  constructor(
+    private router: Router,
+    private transferState: TransferState
+  ) {
+    if (this.transferState.hasKey(AppComponent.APP_STATE_KEY)) {
+      const storedState = this.transferState.get(AppComponent.APP_STATE_KEY, {
+        showHeader: true,
+        showFooter: true
+      });
+      this.showHeader = storedState.showHeader;
+      this.showFooter = storedState.showFooter;
+    }
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // console.log('Navigation end', event);
         this.updateHeaderFooterVisibility(event.urlAfterRedirects);
+
+        this.transferState.set(AppComponent.APP_STATE_KEY, {
+          showHeader: this.showHeader,
+          showFooter: this.showFooter
+        });
       }
     });
   }
 
   updateHeaderFooterVisibility(url: string) {
-    // Adjust these routes based on where you don't want to show header/footer
-    const hiddenRoutesForHeader = environment.hideHeaderOn
+    const hiddenRoutesForHeader = environment.hideHeaderOn;
     this.showHeader = !hiddenRoutesForHeader.some(route => url.includes(route));
 
-    const hiddenRoutesForFooter = environment.hideFooterOn
+    const hiddenRoutesForFooter = environment.hideFooterOn;
     this.showFooter = !hiddenRoutesForFooter.some(route => url.includes(route));
   }
 

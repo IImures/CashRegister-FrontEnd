@@ -17,9 +17,8 @@
 
       <ul [id]="categoryItem.id" class="sidebar-dropdown collapse ms-3">
         <li *ngFor="let subCategoryItem of categoryItem.subCatalogs" class="sidebar-item">
-          <a [routerLink]="['/catalog', categoryItem.id, subCategoryItem.subCatalogType, subCategoryItem.id]"
-             routerLinkActive="true" class="sidebar-link p-2 rounded"
-             (click)="sidebarHeader.clickOutside()"
+          <a  [href]="'/catalog/' + categoryItem.id + '/' + subCategoryItem.subCatalogType + '/' + subCategoryItem.id"
+              class="sidebar-link p-2 rounded"
           >{{subCategoryItem.subCatalogName}}</a>
         </li>
       </ul>

@@ -4,6 +4,7 @@
   border-radius: 1.5rem;
   padding: 1rem;
   min-width: 200px;
+  height: fit-content;
 }
 .list{
   display: flex;
@@ -16,11 +17,12 @@
   margin-left: 1.5rem;
 }
 .body{
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  min-height: 75vh;
   display: flex;
-  padding: 3rem;
+  padding: 2rem;
   background-size: cover;
+  background-position: center;
   background-image:url("/assets/photos/catalog-bg.jpg");
 }
 
@@ -33,7 +35,7 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 816px) {
   .body{
     flex-direction: column;
     padding-left: 0.7rem;

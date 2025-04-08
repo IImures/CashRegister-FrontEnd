@@ -1,17 +1,20 @@
 
 <div *ngIf="itemDetails != null" class="card custom-card">
 
-  <img *ngIf="itemDetails.imageData != undefined && itemDetails.imageData.length>22; else loading"
-       [src]="itemDetails.imageUrl"
-       alt="Image of product"
-       class = "product-img"
-  >
+  <img
+    [ngSrc]="environment.apiUrl + '/' + environment.apiVersion + '/product/' + itemDetails.id + '/image'"
+    [width]="150"
+    [height]="150"
+    alt="Image of product"
+    class = "product-img"
+    loading="lazy"
+    >
   <ng-template #loading>
     <img src="/assets/icons/item-plh-icon.png" alt="Fallback image" height="147" width="180">
   </ng-template>
 
   <div class="card-body">
     <h5 class="card-title">{{itemDetails.name}}</h5>
-    <a [routerLink]="['/product', itemDetails.id]" routerLinkActive="true" class="btn btn-light custom-button">Читати далі</a>
+    <a [href]="'/product/'+itemDetails.id"  class="btn btn-light custom-button">Читати далі</a>
   </div>
 </div>

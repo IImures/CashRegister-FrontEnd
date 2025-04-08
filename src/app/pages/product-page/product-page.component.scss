@@ -1,10 +1,11 @@
 .main-product-container {
   position: relative;
   background-size: cover;
+  background-position: center;
   background-image: url("/assets/photos/catalog-bg.jpg");
   z-index: 1;
   font-weight: 500;
-  height: 100%;
+  //height: 100%;
   width: 100%;
 }
 
@@ -29,7 +30,10 @@
   color: #000;
 }
 .product-img {
-  max-width: 100%;
+  //width: 300px;
+  //height: 300px;
+  min-width: 10%;
+  min-height: 10%;
   padding: 10px;
 }
 .tab-content {
@@ -40,7 +44,9 @@
   border-bottom-right-radius: 3rem;
   border-bottom-left-radius: 3rem;
   border-top-right-radius: 3rem;
-  min-height: 300px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  //min-height: 300px;
 }
 
 .nav-link{
@@ -61,6 +67,6 @@
 
 .general-info{
   padding: 2rem;
-  min-height: 300px;
+  //min-height: 300px;
 }
 

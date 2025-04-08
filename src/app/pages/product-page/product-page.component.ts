@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, makeStateKey, OnDestroy, OnInit, TransferState} from '@angular/core';
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {ProductPageDetails} from "../../interfaces/product-page-details";
 import {ProductService} from "../../services/product.service";
-import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-product-page',
@@ -23,17 +23,14 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     productName: "",
     title: "",
     description: "",
-    characteristics:"",
-    imageData: "",
-    imageUrl: ""
+    characteristics:""
   };
-  public componentLoaded = false;
   private routeSubscription?: Subscription;
 
   constructor(
-    private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private transferState: TransferState
   ) {
   }
 
@@ -53,27 +50,23 @@ export class ProductPageComponent implements OnInit, OnDestroy {
       }
 
       this.fetchData(productId);
-      this.componentLoaded = true;
     });
 
   }
 
   private fetchData(productId: string) {
-    this.productService.getProductDescription(productId).subscribe(
-      description => {
-        this.description = description;
+    const PRODUCT_DETAILS_KEY = makeStateKey<ProductPageDetails>('product-details-' + productId);
 
-        this.productService.getProductDescriptionImage(productId).subscribe(
-          async image => {
-            this.description.imageData = await image.text();
-            this.description.imageUrl = this.sanitizer.bypassSecurityTrustUrl(this.description.imageData);
-          }
-        );
-
-      }
-
-    );
-
+    if (this.transferState.hasKey(PRODUCT_DETAILS_KEY)) {
+      this.description = this.transferState.get(PRODUCT_DETAILS_KEY, this.description);
+    } else {
+      this.productService.getProductDescription(productId).subscribe(
+        description => {
+          this.description = description;
+          this.transferState.set(PRODUCT_DETAILS_KEY, description);
+        }
+      );
+    }
   }
 
   ngOnDestroy(): void {
@@ -82,4 +75,5 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     }
   }
 
+  protected readonly environment = environment;
 }

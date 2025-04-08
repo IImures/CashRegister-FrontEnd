@@ -1,73 +1,50 @@
 <div class ="main-product-container pt-5 pb-5">
-<div class="container" *ngIf="componentLoaded">
+<div class="container" >
   <div class="row general-info">
+
     <div class="col-md-4">
-      <img *ngIf="description.imageData != undefined && description.imageData.length > 22;"
-           [src]="description.imageUrl"
-           alt="Image of product"
-           class = "product-img"
+      <img
+        [ngSrc]="environment.apiUrl + '/' + environment.apiVersion + '/product/' + description.id + '/image'"
+        [width]="300"
+        [height]="300"
+        alt="Image of product"
+        class="product-img img-fluid"
+        placeholder="/assets/icons/big-register-plh.png"
+        [placeholderConfig]="{ blur: false }"
       >
     </div>
-    <div class="col-lg-8 d-flex flex-column justify-content-center">
+
+    <div class="col-12 col-sm-8 d-flex flex-column justify-content-center">
       <h2 class="product-title">{{ description.productName }}</h2>
       <p class="font-weight-bold" [innerHTML]="description.title"></p>
     </div>
+
   </div>
 
   <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+
     <li class="nav-item" role="presentation">
       <button class="nav-link active fw-bold" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Опис</button>
     </li>
+
     <li class="nav-item" role="presentation">
       <button class="nav-link fw-bold" id="characteristics-tab" data-bs-toggle="tab" data-bs-target="#characteristics" type="button" role="tab" aria-controls="characteristics" aria-selected="false">Характеристики</button>
     </li>
+
   </ul>
+
   <div class="tab-content" id="myTabContent">
+
     <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
       <h5>Опис</h5>
       <div [innerHTML]="description.description"></div>
-<!--      <p>MG-N707TS – фіскальний реєстратор на базі перевіреного часом фіскального принтера Bono-E, від польської компанії Novitus, відомого європейського виробника фіскальної техніки. Простота, доступна ціна та висока якість, ідеально підходить для невеликих компаній і приватних підприємців. Основні якості:</p>-->
-<!--      <ul>-->
-<!--        <li>Введено в Державний Реєстр РРО України і відповідає нормам законодавства.</li>-->
-<!--        <li>Вбудований модем для on-line передачі контрольної стрічки в електронній формі (КЛЕФ) в фіскальну службу.</li>-->
-<!--        <li>Швидкість друку до 56 міліметрів в секунду.</li>-->
-<!--        <li>Висока надійність.</li>-->
-<!--        <li>Ресурс картриджа збільшений до мільйона символів.</li>-->
-<!--        <li>Реєстратор оснащений вбудованим індикатором клієнта і має виключно привабливий дизайн.</li>-->
-<!--      </ul>-->
     </div>
+
     <div class="tab-pane fade" id="characteristics" role="tabpanel" aria-labelledby="characteristics-tab">
       <h5>Характеристики</h5>
       <div [innerHTML]="description.characteristics"></div>
-<!--      <table class='table'>-->
-<!--        <tbody>-->
-<!--        <tr>-->
-<!--          <th scope='row'>Версія ПО:</th>-->
-<!--          <td>MG-07</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <th scope='row'>Індикатор покупця:</th>-->
-<!--          <td>Вбудований рідкокристалічний, 5 рядків по 16 символів</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <th scope='row'>Канали доступу в інтернет:</th>-->
-<!--          <td>1x Ethernet (RJ-45)</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <th scope='row'>Кількість клавіш:</th>-->
-<!--          <td>32</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <th scope='row'>Кількість функційних клавіш:</th>-->
-<!--          <td>4 кнопки керування і кнопка навігації</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <th scope='row'>Кількість відділень:</th>-->
-<!--          <td>15</td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--      </table>-->
     </div>
+
   </div>
 </div>
 </div>

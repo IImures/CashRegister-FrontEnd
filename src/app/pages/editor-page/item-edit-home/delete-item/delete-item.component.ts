@@ -3,10 +3,10 @@ import {ListItemDetails} from "../../../../interfaces/list-item-details";
 import {ProductService} from "../../../../services/product.service";
 import {CatalogItem} from "../../../../interfaces/catalog-item";
 import {CatalogService} from "../../../../services/catalog.service";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PageResponse} from "../../../../interfaces/page-response";
-import {DomSanitizer} from "@angular/platform-browser";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-delete-item',
@@ -15,7 +15,8 @@ import {DomSanitizer} from "@angular/platform-browser";
     NgForOf,
     ReactiveFormsModule,
     FormsModule,
-    NgIf
+    NgIf,
+    NgOptimizedImage
   ],
   templateUrl: './delete-item.component.html',
   styleUrl: './delete-item.component.scss'
@@ -34,7 +35,6 @@ export class DeleteItemComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private catalogService: CatalogService,
-    private sanitizer: DomSanitizer,
   ) {
   }
 
@@ -71,29 +71,29 @@ export class DeleteItemComponent implements OnInit {
       {
         next: data => {
           this.getPages(data);
-          this.getProductImages();
+          // this.getProductImages();
         }
       }
     )
   }
 
-  private getProductImages() {
-    this.products.forEach(
-      component => {
-        this.productService.getProductImage(component.id).subscribe(
-          {
-            next: async (data) => {
-              component.imageData = await data.text();
-              component.imageUrl = this.sanitizer.bypassSecurityTrustUrl(component.imageData);
-            },
-            error: err => {
-              console.log(err);
-            }
-          }
-        )
-      }
-    );
-  }
+  // private getProductImages() {
+  //   this.products.forEach(
+  //     component => {
+  //       this.productService.getProductImage(component.id).subscribe(
+  //         {
+  //           next: async (data) => {
+  //             component.imageData = await data.text();
+  //             component.imageUrl = this.sanitizer.bypassSecurityTrustUrl(component.imageData);
+  //           },
+  //           error: err => {
+  //             console.log(err);
+  //           }
+  //         }
+  //       )
+  //     }
+  //   );
+  // }
 
   private getPages(productDetails: PageResponse<ListItemDetails>) {
     this.products = productDetails.content;
@@ -134,4 +134,6 @@ export class DeleteItemComponent implements OnInit {
       );
     }
   }
+
+  protected readonly environment = environment;
 }

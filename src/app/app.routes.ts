@@ -14,7 +14,7 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomePageComponent,
-    title:"Головна сторінка"
+    title:"Центр сервісного обслуговування РРО ФОП Калинченко І.М."
   },
   {
     path: 'about-us',
